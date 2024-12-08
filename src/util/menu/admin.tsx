@@ -4,8 +4,8 @@ import { useLocation, useNavigate } from "react-router-dom"
 export const AdminMenu = () => {
     const location = useLocation();
     const navigation = useNavigate();
-    const activeBar = 'border-l-2 font-bold text-blue-200 border-blue-200 flex items-center gap-x-2 cursor-pointer';
-    const inactiveBar = 'text-white flex items-center gap-x-2 cursor-pointer hover:text-blue-200';
+    const activeBar = 'border-l-2 font-bold text-blue-200 border-blue-200 flex items-center gap-x-2 cursor-pointer px-2 text-blue-100';
+    const inactiveBar = 'text-white flex items-center gap-x-2 cursor-pointer hover:text-blue-200 ';
     return <>
         <ul className="pt-6 w-full flex flex-col gap-y-4">
             <li onClick={() => navigation("/admin")} className={`${inactiveBar} ${location.pathname === '/admin' && activeBar}`}>
