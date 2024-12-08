@@ -1,9 +1,11 @@
-import { Close, Print, Search } from "@mui/icons-material"
-import { Box, Modal, TextField } from "@mui/material"
+import { Close, Print } from "@mui/icons-material"
+import { Box, Modal } from "@mui/material"
 import { CreateNewSite } from "../../../../../../forms/site/create"
 import { useState } from "react"
-import ViewSites from "./viewSite"
-import NewProduct from "./newProduct"
+import ViewSites from "./view/site/viewSite"
+import NewProduct from "./view/product/newProduct"
+import { ViewProduct } from "./view/product"
+import { DisplayProductInStock } from "./view/stock/display"
 type DialogBoxProps = {
     open: boolean,
     type: string,
@@ -23,16 +25,15 @@ export const StockManagement = () => {
 
     return <>
 
-        <h1>Stock Management</h1>
-        <div className="flex justify-between items-center mb-4">
-            <TextField placeholder="search ..." InputProps={{ endAdornment: <Search /> }} />
-            <div className="flex gap-3">
+        
+        <div className="bg-slate-500 text-clip text-white p-2 rounded-md my-2">
+        <h1 className="text-center p-1">Stock Management tools</h1>
+             <div className="grid grid-cols-3 gap-3">
                 <div className=" bg-red-500/20 text-center p-1">
                     <div className="text-sm mb-1 font-bold">
                        Stock
                     </div>
-                    <div className="flex gap-2">
-                    <button className="bg-blue-950 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add new stock</button>
+                    <div className="flex justify-center  m-auto gap-2">
                         <button className="bg-blue-950 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><Print/></button>
                     </div>
                 </div>
@@ -42,7 +43,7 @@ export const StockManagement = () => {
                     </div>
                     <div className="flex gap-2">
                     <NewProduct />
-                        <ViewSites />
+                        <ViewProduct />
                     </div>
                 </div>
                 <div className=" bg-blue-500/20 text-center p-1">
@@ -63,45 +64,7 @@ export const StockManagement = () => {
                 </div>
             </div>
         </div>
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead className="text-xs uppercase  bg-blue-950 text-white">
-                    <tr>
-                        <th scope="col" className="px-6 py-3">
-                            Gold category
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Site
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Quantity
-                        </th>
-
-                        <th scope="col" className="px-6 py-3">
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple MacBook Pro 17"
-                        </th>
-                        <td className="px-6 py-4">
-                            Silver
-                        </td>
-                        <td className="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td className="flex items-center px-6 py-4">
-                            <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            <a href="#" className="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
+         <DisplayProductInStock/>
 
         <Modal open={openDialog.open && openDialog.type === 'new-site'} onClose={handleCloseDialog} >
             <Box className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-auto h-max-[90dvh] overflow-x-auto bg-white rounded-lg shadow-lgfirst-line:'>
