@@ -1,8 +1,9 @@
-import { Close, Search } from "@mui/icons-material"
+import { Close, Print, Search } from "@mui/icons-material"
 import { Box, Modal, TextField } from "@mui/material"
 import { CreateNewSite } from "../../../../../../forms/site/create"
 import { useState } from "react"
 import ViewSites from "./viewSite"
+import NewProduct from "./newProduct"
 type DialogBoxProps = {
     open: boolean,
     type: string,
@@ -26,16 +27,40 @@ export const StockManagement = () => {
         <div className="flex justify-between items-center mb-4">
             <TextField placeholder="search ..." InputProps={{ endAdornment: <Search /> }} />
             <div className="flex gap-3">
-                <button className="bg-blue-950 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add new stock</button>
-               
-                <button className="bg-blue-950 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => {
-                        setOpenDialog({
-                            open: true,
-                            type: "new-site"
-                        })
-                    }}>Add site</button>
-                    <ViewSites/>
+                <div className=" bg-red-500/20 text-center p-1">
+                    <div className="text-sm mb-1 font-bold">
+                       Stock
+                    </div>
+                    <div className="flex gap-2">
+                    <button className="bg-blue-950 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add new stock</button>
+                        <button className="bg-blue-950 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><Print/></button>
+                    </div>
+                </div>
+                <div className=" bg-yellow-500/20 text-center p-1">
+                    <div className="text-sm mb-1 font-bold">
+                       Product
+                    </div>
+                    <div className="flex gap-2">
+                    <NewProduct />
+                        <ViewSites />
+                    </div>
+                </div>
+                <div className=" bg-blue-500/20 text-center p-1">
+                    <div className="text-sm mb-1 font-bold">
+                        Mining site
+                    </div>
+                    <div className="flex gap-2">
+                        <button className="bg-blue-950 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            onClick={() => {
+                                setOpenDialog({
+                                    open: true,
+                                    type: "new-site"
+                                })
+                            }}>Add site
+                        </button>
+                        <ViewSites />
+                    </div>
+                </div>
             </div>
         </div>
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -89,7 +114,7 @@ export const StockManagement = () => {
                             className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                             data-modal-toggle="defaultModal"
                         >
-                            <Close/>
+                            <Close />
                         </button>
                     </div>
                 </CreateNewSite>
