@@ -3,6 +3,9 @@ import { Axios } from "../util/axios";
 import { PageInput } from "../util/page";
 
 export class ProductServices{
+    public async getAllProducts() {
+        return Axios().get(`/product/get-all`); 
+    }
     public async createProduct(product:Product){
         return Axios().post(`/product/create`,product); 
     }
