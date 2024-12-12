@@ -12,7 +12,7 @@ export class ProductServices{
     public async productList(page:PageInput){
         return Axios().post(`/product/find-all`,page); 
     }
-    public async deleteProduct(id:PageInput){
+    public async deleteProduct(id:string){
         return Axios().delete(`/product/delete-product/${id}`); 
     }
 }

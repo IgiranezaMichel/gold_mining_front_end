@@ -1,5 +1,5 @@
 export enum USER_STATUS {
-    ACTIVE,
-    INACTIVE,
-    LEAVE,
+    ACTIVE="ACTIVE",
+    INACTIVE="INACTIVE",
+    LEAVE="LEAVE"
     }
